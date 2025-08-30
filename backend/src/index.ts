@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./utils/auth";
+import errorHandler from "./middleware/middleware";
 
 dotenv.config();
 const app = express();
@@ -28,5 +29,7 @@ app.get("/", (req, res) =>
     message: "success !",
   })
 );
+
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server is running on the Port: ${PORT}`));
