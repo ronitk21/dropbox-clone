@@ -4,8 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "node index.ts",
-    "start": "nodemon index.ts"
+    "dev": "node index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
