@@ -13,6 +13,7 @@ export const auth = betterAuth({
   },
   plugins: [
     emailOTP({
+      overrideDefaultEmailVerification: true,
       async sendVerificationOTP({ email, otp, type }) {
         let subject = "Your Verification OTP";
         if (type === "sign-in") subject = "Sign-in Verification Code";
