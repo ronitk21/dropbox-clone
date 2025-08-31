@@ -3,10 +3,14 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { toNodeHandler } from "better-auth/node";
+
 import { auth } from "./utils/auth";
 import errorHandler from "./middleware/middleware";
+import authRouter from './routes/auth.route.ts'
 
 dotenv.config();
+const PORT = process.env.PORT || 5001;
+
 const app = express();
 
 app.all("/api/auth/{*any}", toNodeHandler(auth));
@@ -22,7 +26,10 @@ app.use(
 );
 app.use(cookieParser());
 
-const PORT = process.env.PORT || 5001;
+// Custom Routes
+
+app.use('/api/auth', authRouter)
+
 
 app.get("/", (req, res) =>
   res.status(200).json({
